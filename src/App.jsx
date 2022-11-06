@@ -8,6 +8,7 @@ function App() {
 
 	function handleAdd() {
 		setTasks((prev) => [...prev, { text: inputValue }])
+		setDoneTasks((prev) => [...prev, { text: inputValue }])
 	}
 
 	return (
