@@ -5,6 +5,7 @@
 	margin: 0;
 	padding: 0;
 }
+
 $main-color: hsl(226, 58%, 53%);
 $secondary-color: hsl(267, 48%, 58%);
 $bg-color: hsl(0, 0%, 16%);
@@ -43,6 +44,12 @@ body {
 	display: flex;
 	flex-direction: column;
 	padding: 1rem;
+}
+
+.input-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .input-add {
@@ -150,7 +157,7 @@ body {
 	gap: 1rem;
 	align-items: center;
 	background-color: lighten($bg-color, 10);
-	padding: 0.8em 1em;
+	padding: 0.5em 1em;
 	border-radius: 0.5em;
 
 	.btn--circle.done {
@@ -160,6 +167,19 @@ body {
 			rgba(51, 120, 207, 1) 100%
 		);
 		animation: bg-move 1s infinite;
+	}
+
+	input.text {
+		border: none;
+		outline: none;
+		font-size: 1rem;
+		color: white;
+		background-color: lighten($bg-color, 40);
+		padding: 0.5em 1em;
+		border-radius: 100vmax;
+		&:disabled {
+			background-color: inherit;
+		}
 	}
 
 	.trash {
