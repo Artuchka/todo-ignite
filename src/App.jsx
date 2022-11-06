@@ -2,8 +2,13 @@ import { useState } from "react"
 import "./main.scss"
 
 function App() {
+	const [inputValue, setInputValue] = useState("")
 	const [tasks, setTasks] = useState([])
 	const [doneTasks, setDoneTasks] = useState([])
+
+	function handleAdd() {
+		setTasks((prev) => [...prev, { text: inputValue }])
+	}
 
 	return (
 		<div className="App">
@@ -32,8 +37,10 @@ function App() {
 						type="text"
 						className="input-add"
 						placeholder="Add a new task"
+						value={inputValue}
+						onChange={(e) => setInputValue(e.target.value)}
 					/>
-					<button className="btn btn--full">
+					<button className="btn btn--full" onClick={handleAdd}>
 						Create
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +71,7 @@ function App() {
 					</div>
 				</div>
 
-				{tasks.length == 0 ? (
+				{tasks.length === 0 ? (
 					<div className="empty-case">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -84,10 +91,11 @@ function App() {
 						<div>Create tasks and organize your to-do items</div>
 					</div>
 				) : (
-					<div className="todo-list">
-						{" "}
-						{tasks.map((task) => task.text)}
-					</div>
+					<ul className="todo-list">
+						{tasks.map((task) => (
+							<li>{task.text}</li>
+						))}
+					</ul>
 				)}
 			</main>
 		</div>

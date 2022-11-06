@@ -50,6 +50,7 @@ body {
 	outline: none;
 	padding: 1rem;
 	background-color: lighten($bg-color, 10);
+	color: white;
 	border-radius: 0.5em;
 	font-size: 1rem;
 	margin-bottom: 0.5em;
@@ -122,4 +123,13 @@ body {
 	div:first-of-type {
 		font-weight: bold;
 	}
+}
+
+.todo-list {
+	list-style: none;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
