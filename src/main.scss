@@ -73,6 +73,13 @@ body {
 	svg {
 		width: 20px;
 	}
+
+	&.btn--circle {
+		border-radius: 50%;
+		padding: 0.7rem;
+		border: 0.2em solid $main-color;
+		background: transparent;
+	}
 }
 
 .statuses-container {
@@ -132,4 +139,45 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	gap: 0.8em;
+	width: 100%;
+}
+
+.todo-item {
+	display: flex;
+	width: 100%;
+	justify-content: flex-start;
+	gap: 1rem;
+	align-items: center;
+	background-color: lighten($bg-color, 10);
+	padding: 0.8em 1em;
+	border-radius: 0.5em;
+
+	.btn--circle.done {
+		background: linear-gradient(
+			120deg,
+			rgba(140, 61, 187, 1) 0%,
+			rgba(51, 120, 207, 1) 100%
+		);
+		animation: bg-move 1s infinite;
+	}
+
+	.trash {
+		margin-left: auto;
+		width: 1.5rem;
+		color: lighten($bg-color, 50);
+		cursor: pointer;
+	}
+}
+
+@keyframes bg-move {
+	0% {
+		rotate: -45deg;
+	}
+	50% {
+		rotate: 45deg;
+	}
+	100% {
+		rotate: -45deg;
+	}
 }
