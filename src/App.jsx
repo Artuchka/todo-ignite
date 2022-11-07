@@ -1,12 +1,17 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./main.scss"
 import { v4 as uuidv4 } from "uuid"
 import { TodoList } from "./components/TodoList"
 
+const APP_PREFIX = "todoAppReact"
+
 function App() {
 	const [inputValue, setInputValue] = useState("")
-	const [tasks, setTasks] = useState([])
-	const [doneTasks, setDoneTasks] = useState([])
+	const [tasks, setTasks] = useState(getTasks() || [])
+	const [doneTasks, setDoneTasks] = useState(getDoneTasks() || [])
+
+	useEffect(saveTasks, [tasks])
+	useEffect(saveDoneTasks, [doneTasks])
 
 	function handleAdd() {
 		const newTodo = { text: inputValue, id: uuidv4() }
@@ -39,6 +44,22 @@ function App() {
 			prev[ind].text = e.target.value
 			return prev
 		})
+	}
+
+	function saveTasks() {
+		localStorage.setItem(`${APP_PREFIX}_tasks`, JSON.stringify(tasks))
+	}
+	function saveDoneTasks() {
+		localStorage.setItem(
+			`${APP_PREFIX}_donetasks`,
+			JSON.stringify(doneTasks)
+		)
+	}
+	function getTasks() {
+		return JSON.parse(localStorage.getItem(`${APP_PREFIX}_tasks`))
+	}
+	function getDoneTasks() {
+		return JSON.parse(localStorage.getItem(`${APP_PREFIX}_donetasks`))
 	}
 
 	const paramsTodoList = {
