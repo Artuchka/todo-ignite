@@ -20,9 +20,13 @@ function App() {
 		setTasks((prev) => [...prev, newTodo])
 		setInputValue("")
 	}
-	function handleDelete(deleteId) {
-		setTasks((prev) => prev.filter(({ id }) => deleteId != id))
-		setDoneTasks((prev) => prev.filter((id) => deleteId != id))
+	function handleDelete(e, deleteId) {
+		console.log(e.target.parentNode)
+		e.target.parentNode.style.animation = "todoItemOut 1s forwards"
+		setTimeout(() => {
+			setTasks((prev) => prev.filter(({ id }) => deleteId != id))
+			setDoneTasks((prev) => prev.filter((id) => deleteId != id))
+		}, 1000)
 	}
 	function handleDone(doneId) {
 		if (doneTasks.includes(doneId)) {
