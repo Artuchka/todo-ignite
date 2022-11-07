@@ -26,7 +26,7 @@ function App() {
 		setTimeout(() => {
 			setTasks((prev) => prev.filter(({ id }) => deleteId != id))
 			setDoneTasks((prev) => prev.filter((id) => deleteId != id))
-		}, 1000)
+		}, 800)
 	}
 	function handleDone(doneId) {
 		if (doneTasks.includes(doneId)) {
