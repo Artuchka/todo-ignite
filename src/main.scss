@@ -89,6 +89,27 @@ body {
 	}
 }
 
+.filter-container {
+	margin-top: 2rem;
+	display: flex;
+	gap: 3rem;
+	font-size: 1.2rem;
+	justify-content: center;
+	background-color: lighten($bg-color, 20);
+	border-radius: 0.5em;
+	padding: 1rem;
+	list-style: none;
+	li {
+		color: $bg-color;
+		cursor: pointer;
+		text-transform: capitalize;
+		&.active {
+			color: white;
+			font-weight: bold;
+		}
+	}
+}
+
 .statuses-container {
 	display: flex;
 	justify-content: space-between;

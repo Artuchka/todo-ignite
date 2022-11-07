@@ -6,7 +6,9 @@ import { TodoList } from "./components/TodoList"
 const APP_PREFIX = "todoAppReact"
 
 function App() {
+	const filterStates = ["all", "active", "done"]
 	const [inputValue, setInputValue] = useState("")
+	const [filter, setFilter] = useState("all")
 	const [tasks, setTasks] = useState(getTasks() || [])
 	const [doneTasks, setDoneTasks] = useState(getDoneTasks() || [])
 
@@ -68,6 +70,7 @@ function App() {
 		handleDone,
 		handleDelete,
 		handleEdit,
+		filter,
 	}
 
 	return (
@@ -119,6 +122,20 @@ function App() {
 						</svg>
 					</button>
 				</div>
+				<ul className="filter-container">
+					{filterStates.map((state) => {
+						return (
+							<li
+								key={state}
+								className={filter == state ? "active" : ""}
+								onClick={() => setFilter(state)}
+							>
+								{state}
+							</li>
+						)
+					})}
+				</ul>
+
 				<div className="statuses-container">
 					<div className="status-box">
 						<span className="prop main-color">Created tasks</span>
